@@ -1,8 +1,6 @@
-## Getting Started
+## How to Get Started
 
 RUN `npm install`
-
-## How to Use
 
 The is a Shoping List App for Window, Linux and Mac built with Electron js.
 This App will enable you prepare a shopping list and extract it to Excel or PDF file format.
