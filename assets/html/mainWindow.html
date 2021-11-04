@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline'; script-src 'unsafe-inline';"> -->
+    <title>Shopping List</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: lightskyblue;
+            margin:auto;
+        }
+        nav {
+            background: coral;
+            padding: 15px 0;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        nav a{
+            color: #fff;
+            font-size: 25px;
+        }
+
+        table {
+            margin-top: 20px;
+            margin-left: 20px; 
+            width: 70%;
+        }
+
+        tr td{
+            padding: 10px 5px;
+            list-style: none;
+            border: #ccc solid 1px;
+            width: 90%;
+            background-color: lightsteelblue;
+            color: #fff;
+            font-weight: 800;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        thead {
+            background-color: hotpink;
+        }
+        thead th{
+            padding: 5px 20px;
+            margin: 0 30px;
+            width: 60%;
+            color: #000;
+            font-weight: 800;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        thead:last-child{
+            background-color: khaki;
+        }
+
+        .item {
+            width: 90%;
+        }
+        #signature{
+            padding-left: 35%;
+            font-size: 15px;
+            
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a>Shopping List</a>
+        <span id="signature">Powered By: <b>KartAfrica Solutions</b></span>
+    </nav>
+    <ul></ul>
+    <table>
+        <thead>
+            <th class="item">Item Name</th>
+            <th>Price <br/>(GHS)</th>
+        </thead>
+        <tbody></tbody>
+        <thead>
+            <th class="item">Total</th>
+            <th id='result'>0</th>
+        </thead>
+    </table>
+    
+    <script>
+        const electron = require('electron');
+
+        const {
+            ipcRenderer
+        } = electron;
+        
+        const tbody = document.querySelector('tbody');
+        const result = document.querySelector('#result');
+        let prices = [0];
+        let totalAmount = 0;
+
+        // onload(e, () => {
+        //     ipcRenderer.on('items:load', function (e, items) {
+        //         console.log(items);
+        //     })
+        // });
+
+        // Add Item
+        ipcRenderer.on('item:add', function (e, items) {
+            prices = [];
+            tbody.innerHTML = '';
+
+            items.forEach(({name, price}, ind) => {
+                let tr = document.createElement('tr');
+                let td1 = document.createElement('td');
+                let td2 = document.createElement('td');
+    
+                if(ind){
+                    prices.push(parseFloat(price))
+    
+                    td1.innerText = name;
+                    td2.innerText = price;
+                    
+                    td2.className = 'td2';
+                    tr.appendChild(td1)
+                    tr.appendChild(td2)
+    
+                    tbody.appendChild(tr)
+                }
+                const sum = prices.reduce((a, b) => {
+                    return a + b;
+                }, 0);
+                result.innerText = sum.toFixed(2);
+                totalAmount = sum.toFixed(2);
+            });
+        
+    });
+        
+        // Clear Items
+        ipcRenderer.on('items:clear', function() {
+            tbody.innerHTML = ''
+            result.innerHTML = 0;
+            prices = [0];
+
+            ipcRenderer.send('items:clear', 'items');
+        })
+
+        // Remove Item from list
+        tbody.addEventListener('dblclick', removeItem);
+        
+        function removeItem(e) {
+            e.target.remove();
+        }
+        
+        </script>
+</body>
+</html>

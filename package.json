@@ -1,0 +1,26 @@
+{
+  "name": "shopping_list",
+  "version": "1.0.0",
+  "description": "Shopping list desktop app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/logo.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . KartSales --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/logo.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"KartSales\"",
+    "package-linux": "electron-packager . KartSales --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/logo.png --prune=true --out=release-builds"
+  },
+  "author": "Mohammed-Subreel Abdulai\u001b[5~",
+  "license": "MIT",
+  "dependencies": {
+    "blob": "^0.1.0",
+    "electron": "^11.1.1",
+    "electron-builder": "^22.9.1",
+    "electron-store": "^6.0.1",
+    "file-saver": "^2.0.5",
+    "jspdf": "^2.2.0",
+    "node-excel-export": "^1.4.4"
+  },
+  "devDependencies": {
+    "electron-packager": "^15.2.0"
+  }
+}

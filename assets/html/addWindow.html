@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Shopping List Item</title>
+    <style>
+        body {
+            background: lightyellow;
+            margin: auto;
+            font-weight: 800;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        form {
+            width: 90%;
+            margin: auto;
+            border: turquoise double 5px;
+            padding: 11px 5px;
+        }
+
+        div{
+            display: flex;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        div label {
+            color: mediumseagreen;
+        }
+        div input{
+            width: 55%;
+            margin-left: 5px;
+            border: mediumvioletred 2px solid;
+            color: #fff;
+            background-color:turquoise;
+            font-weight: 800;
+        }
+
+        button {
+            border: #ccc solid 1px;
+            margin: auto;
+            padding: 5px 0;
+            border-radius: 5px;
+            color: rgb(5, 52, 73);
+            width: 95%;
+            font-weight: 800;
+            color: mediumseagreen;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div>
+            <label>Enter Item:</label>
+            <input type="text" id="item" placeholder="Item Name" autofocus required>
+        </div>
+        <div>
+            <label>Enter Price:</label>
+            <input type="number" step="any" min='0' id="price" placeholder="Item Price" autofocus required>
+        </div>
+        <button type="submit">Add Item</button>
+    </form>
+
+    <script>
+        const electron = require("electron");
+        const {
+            ipcRenderer
+        } = electron;
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', submitForm);
+
+        function submitForm(e) {
+            e.preventDefault();
+            const name = document.querySelector('#item').value;
+            const price = document.querySelector('#price').value;
+
+            ipcRenderer.send('item:add', {name, price});
+        }
+    </script>
+</body>
+</html>
