@@ -37,7 +37,7 @@ const {
 
 
 // SET TO PRODUCTION
-// process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'production';
 
 let mainWindow;
 let addWindow;

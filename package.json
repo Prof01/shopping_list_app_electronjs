@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/logo.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . KartSales --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/logo.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"KartSales\"",
+    "package-win": "electron-packager . KartSales --platform=win32 --arch=ia32 --icon=assets/icons/win/logo.ico --prune=true --out=release-builds",
     "package-linux": "electron-packager . KartSales --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/logo.png --prune=true --out=release-builds"
   },
   "author": "Mohammed-Subreel Abdulai\u001b[5~",
