@@ -13,7 +13,7 @@ let addWindow = new BrowserWindow({
     title: 'Add Shopping List'
 });
 
-// Handle create Add Window
+// Handle create Add Window.
 function createAddItem(){
 	
 	// Load the HTML File into the window

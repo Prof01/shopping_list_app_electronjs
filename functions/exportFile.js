@@ -3,7 +3,7 @@ const { dialog } = require("electron");
 const fs = require('fs');
 const path = require("path");
 
-// Export File
+// Export File.
 function exportFile(fileExt, fileType, data) {
 	let toLocalPath = path.resolve(app.getPath('documents'), path.basename(''))
 				dialog.showSaveDialog({

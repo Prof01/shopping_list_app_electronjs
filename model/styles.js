@@ -9,7 +9,7 @@ const styles = {
     },
     font: {
       color: {
-        rgb: 'FF7F50'
+        rgb: 'FF7F50',
       },
       sz: 18,
       bold: true,

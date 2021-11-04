@@ -1,5 +1,5 @@
 {
-  "name": "shopping_list",
+  "name": "shopping_list_app",
   "version": "1.0.0",
   "description": "Shopping list desktop app",
   "main": "main.js",

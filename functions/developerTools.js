@@ -1,6 +1,6 @@
 
 function developerTools(mainMenuTemplate) {
-    // Add Developer tools if not in production
+    // Add Developer tools if not in production.
     if(process.env.NODE_ENV !== 'production') {
         mainMenuTemplate.push(
             {

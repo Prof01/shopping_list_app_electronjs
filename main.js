@@ -8,7 +8,7 @@ const exportToExcel = require('./functions/exportToExcel');
 const store = new Store({schema});
 const developerTools = require('./functions/developerTools');
 
-// Check to see if schemas has values or not
+// Check to see if schemas has values or not.
 const itemsSchema = store.get('items');
 const usersSchema = store.get('users');
 const userSchema = store.get('user');

@@ -3,7 +3,7 @@ const styles = require('./styles');
 //Array of objects representing heading rows (very top)
 const heading = [
 	[{value: 'My Shopping List - Powered By: KartArica Solutions', style: styles.headerDark}, {value: 'Powered By: KartAfrica Solutions', style: styles.headerDark}],
-	['a2', 'b2'] // <-- It can be only values
+	['a2', 'b2'] // <-- It can be only values.
   ];
 
   //Here you specify the export structure

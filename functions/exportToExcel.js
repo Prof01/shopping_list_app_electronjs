@@ -16,7 +16,7 @@ function exportToExcel() {
     if(storeItems === undefined){
         dataset = [];
     } else {
-        // Assign Dataset the Array of Items
+        // Assign Dataset the Array of Items.
         dataset = storeItems;
 
         // Calculate the total sum and assign it to totalAmount
